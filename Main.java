@@ -30,7 +30,7 @@ public class Main {
 					}finally{
 						lock.unlock();
 					}
-			}
+			}System.out.println("A线程结束");
 		}	
 	}
 	
@@ -44,14 +44,17 @@ public class Main {
 					System.out.println(i + " ");
 					cond.signalAll();
 					try {
-						cond.await();
+						if(i<26)
+						{
+							cond.await();
+							}
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}finally{
 						lock.unlock();
 					}
-			}
+			}System.out.println("B线程结束");
 		}	
 	}
 	
